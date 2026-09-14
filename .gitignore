@@ -1,0 +1,15 @@
+# .NET build and IDE artifacts
+**/bin/
+**/obj/
+.vs/
+TestResults/
+*.user
+*.suo
+
+# Local environment and secret material
+.env
+.env.*
+!.env.example
+*.pfx
+*.pem
+*.key

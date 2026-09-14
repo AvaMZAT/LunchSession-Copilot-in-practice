@@ -1,0 +1,41 @@
+@baseUrl = http://localhost:5047
+@todoId = {{createTodo.response.body.$.id}}
+
+### List all todos (200)
+GET {{baseUrl}}/todos
+Accept: application/json
+
+### Create a todo (201); run before the ID-based requests
+# @name createTodo
+POST {{baseUrl}}/todos
+Content-Type: application/json
+
+{
+  "title": "Prepare demo",
+  "isCompleted": false
+}
+
+### Retrieve the created todo (200)
+GET {{baseUrl}}/todos/{{todoId}}
+Accept: application/json
+
+### Update the todo (200)
+PUT {{baseUrl}}/todos/{{todoId}}
+Content-Type: application/json
+
+{
+  "title": "Demo complete",
+  "isCompleted": true
+}
+
+### Delete the todo (204)
+DELETE {{baseUrl}}/todos/{{todoId}}
+
+### Submit an invalid todo (400)
+POST {{baseUrl}}/todos
+Content-Type: application/json
+
+{
+  "title": "",
+  "isCompleted": false
+}
